@@ -2,10 +2,7 @@
   "C_Cpp.intelliSenseEngine": "disabled",
   "cmake.useCMakePresets": "always",
   "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
-  "clangd.arguments": [
-    "--compile-commands-dir=${workspaceFolder}",
-    "--background-index"
-  ],
+  "clangd.arguments": ["--background-index"],
   "files.associations": {
     "*.h": "cpp"
   },

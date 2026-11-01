@@ -34,13 +34,11 @@
   "buildPresets": [
     {
       "name": "msvc-debug",
-      "configurePreset": "msvc-debug",
-      "targets": ["all"]
+      "configurePreset": "msvc-debug"
     },
     {
       "name": "msvc-release",
-      "configurePreset": "msvc-release",
-      "targets": ["all"]
+      "configurePreset": "msvc-release"
     }
   ]
 }

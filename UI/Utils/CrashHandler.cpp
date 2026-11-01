@@ -11,8 +11,6 @@
 #include <eh.h>
 
 // 链接必要的 Windows 库
-#pragma comment(lib, "DbgHelp.lib")
-#pragma comment(lib, "User32.lib")
 
 // 静态防重入标志：防止崩溃处理代码本身发生崩溃导致死循环
 static bool volatile g_IsInCrashHandler = false;

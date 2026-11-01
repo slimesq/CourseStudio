@@ -113,7 +113,7 @@ protected:
     bool compileShader(char const* code, char const* entry, ID3D11PixelShader** shader)
     {
         ComPtr<ID3DBlob> blob, error;
-        // 注意：需在 .pro 或链接器设置中链接 d3dcompiler.lib
+        // 注意：CMake 目标需链接 d3dcompiler.lib
         HRESULT hr = D3DCompile(
             code, strlen(code), nullptr, nullptr, nullptr, entry, "ps_5_0", 0, 0, &blob, &error);
         if (FAILED(hr))

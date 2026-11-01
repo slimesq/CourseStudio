@@ -1,7 +1,6 @@
 // VideoUtils.cpp
 #include "VideoUtils.h"
 #include "Logger.h"
-#include <dwmapi.h>
 #include <inspectable.h>
 
 using namespace winrt;
