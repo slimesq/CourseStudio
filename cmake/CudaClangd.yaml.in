@@ -1,0 +1,8 @@
+If:
+  PathMatch: .*\.cu
+CompileFlags:
+  Add:
+    - --cuda-path=@CUDA_CLANGD_ROOT@
+    - --cuda-gpu-arch=sm_75
+    - -I@CUDA_CUDART_INCLUDE_DIR@
+    - -I@CUDA_NVCC_INCLUDE_DIR@

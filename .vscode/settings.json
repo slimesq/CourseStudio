@@ -4,7 +4,9 @@
   "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
   "clangd.arguments": ["--background-index"],
   "files.associations": {
-    "*.h": "cpp"
+    "*.h": "cpp",
+    "*.cu": "cuda-cpp",
+    "*.cuh": "cuda-cpp"
   },
   "[cpp]": {
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",

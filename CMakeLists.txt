@@ -70,3 +70,29 @@ endif()
 
 configure_file(cmake/CourseStudioIcon.rc.in CourseStudioIcon.rc @ONLY)
 target_sources(CourseStudio PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/CourseStudioIcon.rc")
+
+# Keep the CUDA/D3D11 experiment outside the app target while indexing its
+# C++ source and generating local clangd flags for the kernel source.
+set(CUDA_CUDART_ROOT "" CACHE PATH "CUDA runtime development package or toolkit root")
+set(CUDA_NVCC_ROOT "" CACHE PATH "CUDA compiler package or toolkit root")
+if(CUDA_CUDART_ROOT)
+    find_path(CUDA_CUDART_INCLUDE_DIR cuda_runtime.h
+        HINTS "${CUDA_CUDART_ROOT}/include" NO_DEFAULT_PATH REQUIRED)
+    find_path(CUDA_NVCC_INCLUDE_DIR crt/host_config.h
+        HINTS "${CUDA_NVCC_ROOT}/include" "${CUDA_CUDART_ROOT}/include"
+        NO_DEFAULT_PATH REQUIRED)
+    add_library(CourseStudioCudaIndex OBJECT EXCLUDE_FROM_ALL
+        Cuda/CudaAccelerator.cpp Cuda/CudaAccelerator.h)
+    target_compile_features(CourseStudioCudaIndex PRIVATE cxx_std_20)
+    target_include_directories(CourseStudioCudaIndex PRIVATE
+        Core "${CUDA_CUDART_INCLUDE_DIR}" "${CUDA_NVCC_INCLUDE_DIR}")
+    if(MSVC)
+        target_compile_options(CourseStudioCudaIndex PRIVATE /utf-8)
+    endif()
+    if(CUDA_NVCC_ROOT)
+        set(CUDA_CLANGD_ROOT "${CUDA_NVCC_ROOT}")
+    else()
+        set(CUDA_CLANGD_ROOT "${CUDA_CUDART_ROOT}")
+    endif()
+    configure_file(cmake/CudaClangd.yaml.in "${CMAKE_CURRENT_SOURCE_DIR}/Cuda/.clangd" @ONLY)
+endif()
