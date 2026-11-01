@@ -1,5 +1,6 @@
 // CudaAccelerator.cpp
 #include "CudaAccelerator.h"
+#include "Logger.h"
 
 CudaAccelerator& CudaAccelerator::instance()
 {

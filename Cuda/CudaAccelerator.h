@@ -3,9 +3,7 @@
 #include <d3d11.h>
 #include <cuda_runtime.h>
 #include <cuda_d3d11_interop.h>
-#include <memory>
 #include <mutex>
-#include "Logger.h"
 
 // 声明 CUDA Kernel 包装器
 extern "C" void launchEffectKernel(

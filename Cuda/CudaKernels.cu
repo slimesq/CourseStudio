@@ -1,18 +1,6 @@
 // CudaKernels.cu
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
-#include <stdio.h>
-
-// ---------------------------------------------------------
-// Helper: 错误检查
-// ---------------------------------------------------------
-#define CUDA_CHECK(call) \
-    do { \
-        cudaError_t err = call; \
-        if (err != cudaSuccess) { \
-            printf("CUDA Error: %s at line %d\n", cudaGetErrorString(err), __LINE__); \
-        } \
-    } while (0)
 
 // ---------------------------------------------------------
 // Kernel 1: 简单的图像处理 (例如：增加亮度/美颜预处理)
