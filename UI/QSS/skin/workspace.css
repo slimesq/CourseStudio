@@ -1,0 +1,207 @@
+/* =======================================================
+   WorkSpaceWindow 全局容器
+   设计还原：极浅的冷灰/蓝色渐变背景，营造通透感
+   ======================================================= */
+QWidget#WorkSpaceMainContainer {
+    /* 模拟设计稿的浅色背景：从纯白过渡到极淡的蓝灰 */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #FFFFFF, stop:1 #F2F5FA);
+    border-radius: 16px;
+    border: 1px solid #FFFFFF; /* 增加一道高光边框提升质感 */
+}
+
+/* =======================================================
+   顶部导航栏 (Top Bar)
+   ======================================================= */
+
+/* 左侧 Logo 文字 */
+QLabel#ws_logoLabel {
+    color: #1F2D3D; /* 深色沉稳黑 */
+    font-family: "Microsoft YaHei UI", "Segoe UI";
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* 面包屑导航文字 */
+QLabel#ws_crumbLabel {
+    color: #606266; /* 次级文本灰 */
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+QLabel#ws_crumbLabel:hover {
+    color: #409EFF; /* 悬停高亮蓝 */
+}
+
+/* 右侧用户头像 */
+QLabel#ws_userAvatar {
+    border-radius: 16px;
+    border: 2px solid #FFFFFF; /* 头像加白边 */
+    background-color: #E4E7ED; /* 图片加载前的占位色 */
+}
+
+/* 右侧用户名 */
+QLabel#ws_userLabel {
+    color: #606266;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+/* 垂直分割线 */
+QWidget#ws_vLine {
+    background-color: #DCDFE6; /* 浅灰分割线 */
+}
+
+/* =======================================================
+   窗口控制按钮基础设置
+   ======================================================= */
+QPushButton[class="winCtrlBtn"] {
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center; /* 图标居中 */
+}
+
+/* =======================================================
+   1. 最小化按钮 (2张图)
+   ======================================================= */
+QPushButton#ws_minBtn{
+    /* 替换为你的悬停图片路径 */
+    image: url(:/UI/QSS/icon/min_hover.png);
+}
+QPushButton#ws_minBtn:pressed {
+    /* 替换为你的悬停图片路径 */
+    image: url(:/UI/QSS/icon/min_press.png);
+}
+
+/* =======================================================
+   2. 关闭按钮 (2张图)
+   ======================================================= */
+QPushButton#ws_closeBtn{
+    image: url(:/UI/QSS/icon/close_hover.png);
+}
+QPushButton#ws_closeBtn:pressed {
+    image: url(:/UI/QSS/icon/close_press.png);
+}
+
+/* =======================================================
+   3. 最大化/还原按钮 (4张图)
+   ======================================================= */
+
+/* 状态 A: 窗口是正常模式 (isMaximized=false 或未设置)
+   显示：[最大化] 图标
+*/
+QPushButton#ws_maxBtn,
+QPushButton#ws_maxBtn[isMaximized="false"] {
+    image: url(:/UI/QSS/icon/full_hover.png);
+}
+
+QPushButton#ws_maxBtn:pressed,
+QPushButton#ws_maxBtn[isMaximized="false"]:hover {
+    image: url(:/UI/QSS/icon/full_press.png);
+}
+
+
+/* 状态 B: 窗口是最大化模式 (isMaximized=true)
+   显示：[还原] 图标
+*/
+QPushButton#ws_maxBtn[isMaximized="true"] {
+    image: url(:/UI/QSS/icon/min_window_hover.png);
+}
+
+QPushButton#ws_maxBtn[isMaximized="true"]:pressed {
+    image: url(:/UI/QSS/icon/min_window_press.png);
+}
+/* =======================================================
+   主内容区域 - 首页
+   ======================================================= */
+
+/* 核心标题 "工作模式" */
+QLabel#ws_mainTitle {
+    color: #000000;
+    font-family: "Microsoft YaHei UI", sans-serif;
+    font-size: 36px; /* 大号标题 */
+    font-weight: 800; /* 特粗 */
+    letter-spacing: 2px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* =======================================================
+   左右切换导航按钮 (< >)
+   设计还原：深灰色圆形半透明背景，白色箭头
+   ======================================================= */
+QPushButton#ws_navBtn {
+    background-color: rgba(0, 0, 0, 0.4); /* 深色半透明 */
+    color: #FFFFFF;
+    border-radius: 28px; /* 56px的一半，正圆 */
+    border: none;
+    font-size: 24px;
+    font-family: "Arial";
+    font-weight: light;
+    padding-bottom: 4px; /* 微调箭头位置 */
+}
+
+QPushButton#ws_navBtn:hover {
+    background-color: rgba(0, 0, 0, 0.6); /* 悬停加深 */
+    transform: scale(1.05); /* 结合C++可能不支持transform，主要靠颜色 */
+}
+
+QPushButton#ws_navBtn:pressed {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+QPushButton#ws_navBtn:disabled {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* =======================================================
+   托盘菜单 (QMenu)
+   设计还原：清爽白底
+   ======================================================= */
+QMenu {
+    background-color: #FFFFFF;
+    border: 1px solid #EBEEF5;
+    border-radius: 4px;
+    padding: 4px 0;
+}
+
+QMenu::item {
+    background-color: transparent;
+    padding: 8px 24px;
+    color: #606266;
+    font-size: 13px;
+}
+
+QMenu::item:selected {
+    background-color: #ECF5FF; /* 浅蓝背景 */
+    color: #409EFF; /* 蓝色文字 */
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #EBEEF5;
+    margin: 4px 10px;
+}
+
+/* =======================================================
+   滚动条样式 (如果有内容溢出)
+   ======================================================= */
+QScrollBar:vertical {
+    border: none;
+    background: transparent;
+    width: 6px;
+    margin: 0;
+}
+QScrollBar::handle:vertical {
+    background: #DCDFE6;
+    min-height: 20px;
+    border-radius: 3px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #C0C4CC;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}

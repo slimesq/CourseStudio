@@ -1,0 +1,119 @@
+/* =======================================================
+   Scene Create Widget 精致版 (Enterprise Style V3.0)
+   ======================================================= */
+
+/* --- 全局字体与重置 --- */
+QWidget {
+    font-family: "Microsoft YaHei UI", "Segoe UI", sans-serif;
+    outline: none;
+}
+
+/* --- 表单标签 (左侧) --- */
+QLabel[class="form_label"] {
+    color: #1F2329;
+    font-size: 14px;
+    font-weight: 500; /* 稍微减轻字重，更显现代 */
+    background: transparent;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* --- 输入框 & 下拉框 (通用样式) --- */
+QLineEdit[class="form_input"], QComboBox[class="form_input"] {
+    background-color: #FFFFFF;
+    border: 1px solid #DEE0E3;
+    border-radius: 4px; /* 圆角稍微改小一点，更商务 */
+    color: #1F2329;
+    font-size: 14px;
+    padding-left: 10px;
+    /* [关键] 右侧预留30px给下拉箭头，防止文字遮挡 */
+    padding-right: 30px;
+    min-height: 34px;
+    max-height: 34px;
+    selection-background-color: #3370FF; /* 飞书蓝风格 */
+    selection-color: #FFFFFF;
+}
+
+/* 悬停状态 - 边框变色 */
+QLineEdit[class="form_input"]:hover, QComboBox[class="form_input"]:hover {
+    border-color: #8F959E;
+}
+
+/* 聚焦状态 - 品牌色光晕 */
+QLineEdit[class="form_input"]:focus, QComboBox[class="form_input"]:focus, QComboBox[class="form_input"]:on {
+    border-color: #3370FF;
+    background-color: #FFFFFF;
+}
+
+/* 错误状态 */
+QLineEdit[class="input_error"] {
+    border: 1px solid #F54A45;
+    background-color: #FFF2F1;
+    color: #F54A45;
+}
+
+/* --- QComboBox 专属优化 (解决箭头不显示问题) --- */
+
+/* 下拉按钮区域容器 */
+QComboBox[class="form_input"]::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: center right; /* 强制靠右垂直居中 */
+    width: 30px;
+    border-left-width: 0px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: transparent; /* 默认透明 */
+}
+
+/* 下拉按钮区域悬停反馈 (增强交互感) */
+QComboBox[class="form_input"]::drop-down:hover {
+    background-color: #F5F7FA;
+}
+
+/* 下拉箭头图标 */
+/* 请确保资源路径正确。如果图片丢失，此区域会是空的，但 hover 效果仍在 */
+QComboBox[class="form_input"]::down-arrow {
+    image: url(:/UI/QSS/icon/TeenyiconsDownSolid.png);
+    width: 12px;
+    height: 12px;
+}
+
+/* 箭头在下拉菜单打开时的状态 (可选) */
+QComboBox[class="form_input"]::down-arrow:on {
+    /* 如果有 arrow_up_gray.png 可以替换，这里保持原样 */
+    top: 1px; /* 模拟按压效果 */
+}
+
+/* --- 下拉列表 Popup (QAbstractItemView) --- */
+QComboBox[class="form_input"] QAbstractItemView {
+    border: 1px solid #DEE0E3;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 4px 0px;
+    outline: none;
+    margin-top: 2px; /* 与输入框拉开一点距离 */
+    selection-background-color: #F0F5FF;
+    selection-color: #3370FF;
+}
+
+/* 下拉列表项 */
+QComboBox[class="form_input"] QAbstractItemView::item {
+    height: 32px;
+    padding-left: 10px;
+    color: #1F2329;
+    font-size: 14px;
+    background-color: transparent;
+}
+
+/* 下拉列表项：悬停 */
+QComboBox[class="form_input"] QAbstractItemView::item:hover {
+    background-color: #F5F7FA;
+    color: #1F2329;
+}
+
+/* 下拉列表项：选中 */
+QComboBox[class="form_input"] QAbstractItemView::item:selected {
+    background-color: #E1EAFF; /* 更明显的选中背景 */
+    color: #3370FF;
+    font-weight: 600;
+}

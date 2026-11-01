@@ -1,0 +1,200 @@
+/* =======================================================
+   Login Widget Enterprise Theme
+   Theme Color: #337ECC (Ocean Blue)
+   Font Stack: Microsoft YaHei UI, Segoe UI
+   ======================================================= */
+
+/* 1. 主窗口背景与阴影容器 */
+/* 注意：QDialog/QWidget 本身设为透明，样式加在内部 Frame 上 */
+QWidget {
+    font-family: "Microsoft YaHei UI", "Segoe UI", sans-serif;
+    outline: none;
+}
+
+/* 核心容器：圆角 + 纯白背景 */
+QFrame#LoginMainFrame {
+    background-color: #FFFFFF;
+    border-radius: 16px; /* 更大的圆角，更现代 */
+    border: 1px solid #EBEEF5; /* 极淡的边框防锯齿 */
+}
+
+/* =======================================================
+   标题栏
+   ======================================================= */
+QLabel#m_titleLabel {
+    font-size: 26px; /* 稍微缩小一点，更精致 */
+    color: #1A1A1A;  /* 近乎纯黑，但不是纯黑 */
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: "Segoe UI", "Microsoft YaHei UI"; /* 英文优先 */
+}
+
+/* 关闭按钮 - 现在的设计流行无边框，hover 变红 */
+QPushButton#m_closeBtn {
+    background-color: transparent;
+    border-radius: 6px;
+    /* 使用 SVG Base64 图标 (黑色叉号) */
+    image: url(:/UI/QSS/icon/MingcuteCloseFill.png);
+    width: 10px;
+    height: 10px;
+}
+QPushButton#m_closeBtn:hover {
+    background-color: transparent;
+    border-radius: 6px;
+    /* 悬停变白色叉号 */
+    image: url(:/UI/QSS/icon/MingcuteCloseFill_hover.png);
+}
+QPushButton#m_closeBtn:pressed {
+    background-color: transparent;
+    border-radius: 6px;
+    /* 悬停变白色叉号 */
+    image: url(:/UI/QSS/icon/MingcuteCloseFill_press.png);
+}
+/* =======================================================
+   表单区域
+   ======================================================= */
+
+/* 大标题 */
+QLabel { color: #606266; }
+QLabel[text="手机登录"], QLabel[text="账号登录"], QLabel[text="扫码登录"] {
+    font-size: 20px;
+    font-weight: 500;
+    color: #303133; /* 主要文字色 */
+    margin-bottom: 15px;
+}
+
+/* 输入框 - 核心质感 */
+QLineEdit {
+    background-color: #F7F8FA; /* 极淡的灰背景，不仅仅是白色 */
+    border: 1px solid transparent; /* 默认无边框，靠背景色区分 */
+    border-radius: 8px; /* 增加圆角 */
+    color: #303133;
+    font-size: 14px;
+    padding-left: 12px; /* 默认左间距 */
+    height: 48px;       /* 48px 是现代触控/桌面标准高度 */
+    selection-background-color: #337ECC;
+}
+
+/* 带有图标的输入框 - 需要 C++ 设置 property="kind" */
+QLineEdit[kind="user"] {
+    padding-left: 36px;
+    /* 图标：User */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik01MTIgNTEyYTI1NiAyNTYgMCAxIDAgMC01MTIgMjU2IDI1NiAwIDAgMCAwIDUxMnptMCA2NEMzMjAgNTc2IDEyOCA2NzIgMTI4IDg5NmgyNTZ2MTI4SDAvMjU2QyA2NCA2NzIgMCAzODQgMCAzODQgNTc2IDUxMiA1NzZ6IiBmaWxsPSIjOTA5Mzk5IiBvcGFjaXR5PSIwLjUiLz48L3N2Zz4='); /* 简化示意，建议用实心图标 */
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-origin: content;
+    /* Qt QSS background-position 对 padding 的支持有时有 bug，建议配合 margin-left 微调，或者用 image */
+    /* 下面是更稳妥的 Icon 方案：把 Base64 放这里太长，建议在 placeholder 里留空 */
+}
+/* 注意：QSS 中直接 background-image 定位图标比较难完美居中。
+   企业级做法：QLineEdit 不要图标，而是在 QLineEdit 外面套一个 QWidget(HBoxLayout)，
+   左边放一个 QLabel(图标)，右边放 QLineEdit(无边框)。
+
+   但如果坚持只改 CSS，可以使用 padding-left + background 方式，如下简化演示：
+*/
+
+QLineEdit:hover {
+    background-color: #FFFFFF;
+    border: 1px solid #C0C4CC;
+}
+
+QLineEdit:focus {
+    background-color: #FFFFFF;
+    border: 1px solid #337ECC; /* 聚焦亮蓝 */
+}
+
+/* 占位符 */
+QLineEdit::placeholder { color: #A8ABB2; }
+
+/* 验证码按钮 */
+QPushButton#m_getCodeBtn {
+    background: transparent;
+    color: #337ECC;
+    font-weight: bold;
+    border: none;
+    padding: 0 10px;
+    text-align: right;
+}
+QPushButton#m_getCodeBtn:hover { color: #66B1FF; }
+
+/* 复选框 - 保持您代码中的优化，微调颜色 */
+QCheckBox { color: #909399; spacing: 8px; }
+QCheckBox::indicator {
+    width: 18px; height: 18px; /* 稍微大一点 */
+    border-radius: 4px;
+    border: 1px solid #DCDFE6;
+    background-color: #FFF;
+}
+QCheckBox::indicator:checked {
+    background-color: #337ECC;
+    border-color: #337ECC;
+    image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0zODQgODUzLjMzM2wtMzQxLjMzMy0zNDEuMzMzIDEyOC0xMjggMjEzLjMzMyAyMTMuMzMzIDUxMi01MTIgMTI4IDEyOEwzODQgODUzLjMzM3oiIGZpbGw9IiNGRkZGRkYiLz48L3N2Zz4=');
+}
+
+/* 登录大按钮 */
+QPushButton#m_loginBtn {
+    background-color: #337ECC; /* 纯色比渐变现在更流行，或者微渐变 */
+    color: white;
+    font-size: 16px;
+    border-radius: 8px; /* 8px 圆角，不要胶囊，显得更稳重 */
+    border: none;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+QPushButton#m_loginBtn:hover {
+    background-color: #409EFF; /* 亮一点 */
+    margin-top: -1px; /* 向上浮动 1px，产生悬停感 */
+    padding-bottom: 1px;
+}
+QPushButton#m_loginBtn:pressed {
+    background-color: #26609C;
+    margin-top: 1px;
+    padding-bottom: 0px;
+}
+QPushButton#m_loginBtn:disabled {
+    background-color: #A0CFFF;
+}
+
+/* =======================================================
+   右侧区域
+   ======================================================= */
+
+/* 分割线 - 渐变淡出 */
+QFrame#vSplitLine {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 transparent,
+                stop:0.1 #EBEEF5,
+                stop:0.9 #EBEEF5,
+                stop:1 transparent);
+    min-width: 1px; max-width: 1px;
+    border: none;
+}
+
+/* 二维码卡片容器 */
+QLabel#QrCard {
+    background-color: #FFFFFF;
+    border: 1px solid #E4E7ED;
+    border-radius: 12px;
+    /* 增加一个内部阴影或发光效果 */
+}
+/* 扫码提示 */
+QLabel#m_qrHintLabel {
+    color: #909399;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* 链接文字 */
+QLabel[text="账号密码登录"], QLabel[text="手机验证码登录"] {
+    color: #337ECC;
+    font-weight: bold;
+}
+QLabel[text="账号密码登录"]:hover, QLabel[text="手机验证码登录"]:hover {
+    color: #66B1FF;
+}
+
+/* 协议文字 */
+QLabel#m_agreementLabel {
+    color: #C0C4CC;
+    font-size: 12px;
+}

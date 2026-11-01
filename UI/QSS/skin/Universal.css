@@ -1,0 +1,133 @@
+/* =======================================================
+   Universal Dialog & Components Styles
+   ======================================================= */
+
+/* --- 1. UniversalDialog 基础 --- */
+/* 强制背景透明，防止 QWidget 默认绘制灰色背景 */
+QWidget#UniversalDialog {
+    background: transparent;
+    border: none;
+}
+
+QFrame#DialogMainFrame {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #E6E6E6;
+}
+
+QWidget#DialogTitleBar { background: transparent; }
+QLabel#DialogTitleLabel {
+    font-family: "Microsoft YaHei UI";
+    font-size: 15px; font-weight: bold; color: #333;
+}
+
+/* 关闭按钮 */
+QPushButton#DialogCloseBtn {
+    background: transparent; border-radius: 4px; border: none;
+    image: url(:/UI/QSS/icon/MingcuteCloseFill.png); /* 请确保有此图标，或保留原 Base64 */
+    padding: 6px;
+}
+QPushButton#DialogCloseBtn:hover {
+    background-color: #E81123;
+    image: url(:/UI/QSS/icon/MingcuteCloseFill_hover.png);
+}
+
+/* 底部按钮栏 */
+QWidget#DialogButtonBar { background: transparent; }
+
+/* 消息内容 */
+QLabel#DialogMessageLabel {
+    font-size: 14px; color: #555;
+    padding: 10px;
+}
+
+/* --- 2. 通用按钮 (Primary/Secondary/Danger) --- */
+QPushButton[type="primary"] {
+    background-color: #006EFF; color: white; border: none;
+    border-radius: 4px; padding: 6px 18px; font-size: 14px; min-width: 80px;
+}
+QPushButton[type="primary"]:hover { background-color: #2985FF; }
+QPushButton[type="primary"]:pressed { background-color: #005BCF; padding-top: 7px; padding-bottom: 5px; }
+
+QPushButton[type="secondary"] {
+    background-color: #FFFFFF; color: #333; border: 1px solid #D9D9D9;
+    border-radius: 4px; padding: 6px 18px; font-size: 14px; min-width: 80px;
+}
+QPushButton[type="secondary"]:hover { color: #006EFF; border-color: #006EFF; background-color: #F5F9FF; }
+
+QPushButton[type="danger"] {
+    background-color: #FF4D4F; color: white; border: none;
+    border-radius: 4px; padding: 6px 18px; font-size: 14px; min-width: 80px;
+}
+QPushButton[type="danger"]:hover { background-color: #FF7875; }
+
+/* --- 3. SceneCreateWidget 组件样式 --- */
+
+/* 输入框 & 下拉框 */
+QLineEdit[class="input"], QComboBox[class="input"] {
+    background-color: #FFFFFF;
+    color: #333333;
+    border: 1px solid #DCDFE6;
+    border-radius: 4px;
+    padding: 0 10px;
+    min-height: 32px;
+    font-size: 14px;
+}
+QLineEdit[class="input"]:hover, QComboBox[class="input"]:hover { border-color: #C0C4CC; }
+QLineEdit[class="input"]:focus, QComboBox[class="input"]:focus { border-color: #409EFF; }
+
+/* 错误状态输入框 */
+QLineEdit[class="input_error"] {
+    border: 1px solid #F56C6C;
+}
+
+/* 标签 */
+QLabel[class="form_label"] {
+    color: #606266; font-size: 14px; font-weight: bold;
+}
+
+/* 权限分配区域 (ScrollArea) */
+QScrollArea[class="tag_area"] {
+    background-color: #FAFAFA;
+    border: 1px solid #DCDFE6;
+    border-radius: 4px;
+    min-height: 36px;
+}
+QScrollArea[class="tag_area"]:hover { border-color: #C0C4CC; }
+QScrollArea[class="tag_area"][focused="true"] { border-color: #409EFF; }
+
+/* 权限标签 (Tag) */
+QFrame[class="perm_tag"] {
+    background-color: #F0F2F5;
+    border: 1px solid #E9E9EB;
+    border-radius: 4px;
+}
+QLabel[class="perm_tag_text"] {
+    color: #909399; font-size: 12px; border: none; background: transparent;
+}
+QToolButton[class="perm_tag_close"] {
+    background: transparent; border: none; color: #909399; font-weight: bold;
+    border-radius: 8px; width: 16px; height: 16px;
+}
+QToolButton[class="perm_tag_close"]:hover {
+    background-color: #909399; color: #FFF;
+}
+
+/* 删除行按钮 */
+QToolButton[class="row_del_btn"] {
+    background: transparent; border: none; color: #909399; font-size: 16px;
+}
+QToolButton[class="row_del_btn"]:hover {
+    color: #F56C6C; background-color: #FEF0F0; border-radius: 4px;
+}
+
+/* 添加成员按钮 */
+QPushButton[class="add_member_btn"] {
+    background: transparent; color: #409EFF; border: none; font-weight: 600; font-size: 13px;
+}
+QPushButton[class="add_member_btn"]:hover { color: #66B1FF; }
+
+/* 分割线 */
+QFrame[class="h_divider"] {
+    background-color: #E4E7ED; max-height: 1px; border: none;
+}

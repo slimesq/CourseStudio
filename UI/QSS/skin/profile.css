@@ -1,0 +1,92 @@
+/* =======================================================
+   User Profile Enterprise Theme
+   ======================================================= */
+
+/* 1. 主背景卡片 */
+QWidget#ProfileBg {
+    background-color: #FFFFFF;
+    /* 更大的圆角，更柔和 */
+    border-radius: 12px;
+    /* 极淡的边框，几乎不可见，主要靠阴影 */
+    border: 1px solid #F2F6FC;
+}
+
+/* 2. 头部区域 (包含关闭按钮) */
+QWidget#ProfileHeader {
+    background: transparent;
+}
+
+/* 关闭按钮 - 建议替换为 SVG 图标，这里用 CSS 模拟精致化文本 */
+QPushButton#ProfileCloseBtn {
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: #909399; /* 浅灰色 */
+    font-size: 20px;
+    font-weight: 300;
+    padding-bottom: 4px; /* 微调 "×" 的垂直位置 */
+}
+QPushButton#ProfileCloseBtn:hover {
+    background-color: #F5F7FA; /* 极淡的悬停背景 */
+    color: #606266; /* 深灰色 */
+}
+
+/* 3. 头像容器 */
+QLabel#UserAvatar {
+    background-color: #F5F7FA; /* 头像加载前的占位背景 */
+    border-radius: 30px; /* 对应 60x60 的尺寸 */
+    border: 2px solid #FFFFFF; /* 白色描边，增加层次感 */
+}
+
+/* 4. 文本信息 */
+/* 用户名：最大、最黑、加粗 */
+QLabel#NameLabel {
+    color: #1F2D3D; /* 近乎纯黑 */
+    font-size: 18px;
+    font-weight: 600; /* 半粗体 */
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+/* 描述：中等大小、深灰 */
+QLabel#DescLabel {
+    color: #606266;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+/* 5. 数据统计区域容器 */
+QWidget#StatsContainer {
+    background-color: #F9FAFC; /* 极淡的灰背景块，区分层级 */
+    border-radius: 8px;
+    margin: 10px 20px; /* 上下留白，左右内缩 */
+}
+
+/* 统计文本 */
+QLabel#StatsLabel {
+    color: #606266;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 0; /* 增加内部高度 */
+}
+
+/* 6. 底部操作栏 (退出按钮) */
+/* 采用“危险操作”的淡色风格：平时是白底红框，悬停变红底白字 */
+QPushButton#LogoutBtn {
+    background-color: #FFFFFF;
+    color: #F56C6C; /* 警示红 */
+    border: 1px solid #FBC4C4; /* 淡红色边框 */
+    border-radius: 6px; /* 标准圆角 */
+    font-size: 14px;
+    font-weight: 500;
+    height: 36px; /* 增加按钮高度 */
+}
+QPushButton#LogoutBtn:hover {
+    background-color: #F56C6C;
+    color: #FFFFFF;
+    border-color: #F56C6C;
+}
+QPushButton#LogoutBtn:pressed {
+    background-color: #E64242;
+    border-color: #E64242;
+}

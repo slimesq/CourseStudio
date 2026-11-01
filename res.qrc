@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/">
+        <file>UI/QSS/skin/login.css</file>
+        <file>UI/QSS/skin/workspace.css</file>
+        <file>UI/QSS/skin/screen.css</file>
+        <file>UI/QSS/skin/dialog.css</file>
+        <file>UI/QSS/skin/scene_editor.css</file>
+        <file>UI/QSS/skin/profile.css</file>
+        <file>UI/QSS/skin/Universal.css</file>
+        <file>UI/QSS/skin/scene_create.css</file>
+        <file>UI/QSS/icon/CS.png</file>
+        <file>UI/QSS/srs/bg.png</file>
+        <file>UI/QSS/icon/UilExit.png</file>
+        <file>UI/QSS/icon/TeenyiconsDownSolid.png</file>
+        <file>UI/QSS/icon/MingcuteCloseFill.png</file>
+        <file>UI/QSS/icon/MingcuteCloseFill_hover.png</file>
+        <file>UI/QSS/icon/MingcuteCloseFill_press.png</file>
+        <file>UI/QSS/icon/log.png</file>
+        <file>UI/QSS/skin/camera_settings.css</file>
+        <file>UI/QSS/icon/glasses.png</file>
+        <file>UI/QSS/icon/cat_ears.png</file>
+        <file>UI/QSS/icon/crown.png</file>
+        <file>UI/QSS/icon/rabbit.png</file>
+        <file>UI/QSS/icon/close.png</file>
+        <file>UI/QSS/icon/close_hover.png</file>
+        <file>UI/QSS/icon/close_press.png</file>
+        <file>UI/QSS/icon/full.png</file>
+        <file>UI/QSS/icon/full_hover.png</file>
+        <file>UI/QSS/icon/full_press.png</file>
+        <file>UI/QSS/icon/min.png</file>
+        <file>UI/QSS/icon/min_hover.png</file>
+        <file>UI/QSS/icon/min_press.png</file>
+        <file>UI/QSS/icon/min_window.png</file>
+        <file>UI/QSS/icon/min_window_hover.png</file>
+        <file>UI/QSS/icon/min_window_press.png</file>
+    </qresource>
+</RCC>

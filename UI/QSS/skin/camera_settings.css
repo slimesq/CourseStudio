@@ -1,0 +1,246 @@
+/* ============================================================
+   Camera Settings Dialog - Enterprise Blue/White Theme
+   File: camera_settings.css
+   ============================================================ */
+
+/* --- 1. 全局字体与重置 --- */
+QWidget {
+    font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+    outline: none; /* 去除虚线框 */
+}
+
+/* --- 2. 主窗口框架 --- */
+QFrame#DialogMainFrame {
+    background-color: #FFFFFF;
+    border: 1px solid #EBEEF5; /* 极淡的边框 */
+    border-radius: 8px;
+}
+
+/* 标题栏文字 */
+QLabel#DialogTitleLabel {
+    color: #303133; /* 主要文字颜色 */
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* 关闭按钮 - 现在的设计流行无边框，hover 变红 */
+QPushButton#DialogCloseBtn {
+    background-color: transparent;
+    border-radius: 6px;
+    /* 使用 SVG Base64 图标 (黑色叉号) */
+    image: url(:/UI/QSS/icon/MingcuteCloseFill.png);
+    width: 10px;
+    height: 10px;
+}
+QPushButton#DialogCloseBtn:hover {
+    background-color: transparent;
+    border-radius: 6px;
+    /* 悬停变白色叉号 */
+    image: url(:/UI/QSS/icon/MingcuteCloseFill_hover.png);
+}
+QPushButton#DialogCloseBtn:pressed {
+    background-color: transparent;
+    border-radius: 6px;
+    /* 悬停变白色叉号 */
+    image: url(:/UI/QSS/icon/MingcuteCloseFill_press.png);
+}
+
+/* --- 3. 侧边栏 (Sidebar) --- */
+QListWidget#Sidebar {
+    background-color: #F7F8FA; /* 极浅灰背景，区分内容区 */
+    border: none;
+    border-right: 1px solid #E4E7ED;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding-top: 10px;
+    outline: none;
+}
+
+QListWidget#Sidebar::item {
+    height: 44px;
+    margin: 4px 8px;
+    border-radius: 6px;
+    color: #606266;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+/* 鼠标悬停 */
+QListWidget#Sidebar::item:hover {
+    background-color: #E6F1FC; /* 浅蓝悬停 */
+    color: #1890FF;
+}
+
+/* 选中状态 - 企业级重点 */
+QListWidget#Sidebar::item:selected {
+    background-color: #E6F7FF; /* 极浅蓝背景 */
+    color: #1890FF;            /* 品牌蓝文字 */
+    border-left: 3px solid #1890FF; /* 左侧蓝色指示条 */
+    font-weight: bold;
+}
+
+/* --- 4. 内容区域 --- */
+QStackedWidget#ContentArea {
+    background-color: #FFFFFF;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* 滚动区域背景 */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+QWidget#ScrollContent {
+    background-color: transparent;
+}
+
+/* --- 5. 通用控件样式 --- */
+
+/* 标签文字 */
+QLabel {
+    color: #606266;
+    font-size: 13px;
+}
+
+/* --- 滑块 (Slider) 企业级圆形精修版 (防裁剪优化) --- */
+
+/* 1. 整体容器：关键修改 */
+QSlider:horizontal {
+    /* [关键] 增加高度，给悬停时的放大效果留足空间 */
+    /* 悬停滑块总高约 18px，加上阴影或抗锯齿，给 24px-26px 最安全 */
+    height: 26px;
+    background: transparent;
+    /* 增加左右内边距，防止滑块拖到最左/最右时被切掉 */
+    padding: 0px 2px;
+}
+
+/* 2. 轨道 (Groove) */
+QSlider::groove:horizontal {
+    border: none;
+    height: 4px;        /* 轨道高度 */
+    background: #E4E7ED; /* 灰色底 */
+    border-radius: 2px; /* 圆角 */
+
+    /* 这里的 margin 无需设置，默认居中 */
+}
+
+/* 3. 已滑动部分 (Sub-page) */
+QSlider::sub-page:horizontal {
+    background: #1890FF; /* 品牌蓝 */
+    border-radius: 2px;
+    height: 4px;
+}
+
+/* 4. 滑块圆点 (Handle) - 默认状态 */
+QSlider::handle:horizontal {
+    background: #FFFFFF;       /* 纯白背景 */
+    border: 2px solid #1890FF; /* 2px 蓝色边框 */
+
+    /* 内容尺寸 12px + 边框 4px = 总直径 16px */
+    width: 12px;
+    height: 12px;
+
+    /* 半径 = 12/2 + 2 = 8px (完美圆形) */
+    border-radius: 8px;
+
+    /* 垂直居中公式: (轨道高 4 - 滑块总高 16) / 2 = -6 */
+    margin: -6px 0;
+}
+
+/* 5. 悬停状态：轻微放大效果 */
+QSlider::handle:horizontal:hover {
+    background: #FFFFFF;
+    border: 2px solid #40A9FF; /* 稍微亮一点的蓝 */
+
+    /* 内容尺寸 14px + 边框 4px = 总直径 18px */
+    width: 14px;
+    height: 14px;
+
+    /* 半径 = 14/2 + 2 = 9px */
+    border-radius: 9px;
+
+    /* 垂直居中公式: (轨道高 4 - 滑块总高 18) / 2 = -7 */
+    margin: -7px 0;
+}
+
+/* 6. 按下状态：实心点 */
+QSlider::handle:horizontal:pressed {
+    background: #1890FF; /* 变成实心蓝 */
+    border: 2px solid #1890FF;
+
+    /* 保持悬停时的大小 (18px)，防止按下时抖动 */
+    width: 14px;
+    height: 14px;
+    border-radius: 9px;
+    margin: -7px 0;
+}
+
+/* 7. 禁用状态 */
+QSlider::handle:horizontal:disabled {
+    border: 2px solid #C0C4CC;
+    background: #F5F7FA;
+    /* 禁用时保持默认大小 */
+    width: 12px;
+    height: 12px;
+    border-radius: 8px;
+    margin: -6px 0;
+}
+QSlider::sub-page:horizontal:disabled {
+    background: #C0C4CC;
+}
+
+/* --- 数字输入框 (SpinBox) --- */
+QSpinBox {
+    border: 1px solid #DCDFE6;
+    border-radius: 4px;
+    padding: 2px;
+    color: #606266;
+    selection-background-color: #1890FF;
+}
+QSpinBox:hover {
+    border-color: #C0C4CC;
+}
+QSpinBox:focus {
+    border-color: #1890FF; /* 聚焦变蓝 */
+}
+/* 隐藏 SpinBox 的上下按钮 (可选，看你需要) */
+QSpinBox::up-button, QSpinBox::down-button {
+    width: 0px;
+    border: none;
+}
+
+/* --- 复选框/开关 (CheckBox) --- */
+QCheckBox {
+    spacing: 8px;
+    color: #303133;
+    font-size: 14px;
+}
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #DCDFE6;
+    border-radius: 4px;
+    background: #FFFFFF;
+}
+QCheckBox::indicator:hover {
+    border-color: #1890FF;
+}
+QCheckBox::indicator:checked {
+    background-color: #1890FF;
+    border-color: #1890FF;
+    image: url(:/UI/QSS/icon/check_white.png); /* 需要你提供一个白色勾选图标，或者不加 image 仅纯色 */
+}
+
+/* --- 滤镜网格列表 --- */
+QListWidget#IconGrid {
+    background-color: transparent;
+    border: none;
+}
+QListWidget#IconGrid::item {
+    color: #606266;
+}
+QListWidget#IconGrid::item:selected {
+    background-color: transparent;
+    color: #1890FF;
+}

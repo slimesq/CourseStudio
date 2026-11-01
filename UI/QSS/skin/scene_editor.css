@@ -1,0 +1,191 @@
+/* =======================================================
+   Scene Editor & Screen Window Styles
+   ======================================================= */
+
+/* --- 1. ScreenWindow 基础 --- */
+/* 外层容器：背景透明，负责承载圆角内容 */
+QWidget#ScreenWindow {
+    background-color: transparent;
+    border: none;
+}
+
+/* 内层主体容器 (BodyWidget)：负责绘制白色背景和底部圆角 */
+QWidget#BodyWidget {
+    background-color: #FFFFFF;
+
+    /* 关键：只给底部两个角设置圆角 */
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+
+    /* 可选：加一个极细的边框增强质感 */
+    /* border: 1px solid #DCDFE6; */
+    /* 如果上方衔接标题栏，border-top 应设为 none */
+}
+
+/* --- 1. 面板容器 --- */
+QWidget#LeftPanel {
+    background-color: #FFFFFF;
+    border-right: none; /* [修改] 移除原有边框，改用独立分割线 */
+    border-bottom-left-radius: 12px;
+}
+
+QFrame#PanelSplitter {
+    color: #E4E7ED; /* 设定线条颜色 (对应 setFrameShape 绘制的颜色) */
+    background-color: #E4E7ED; /* 确保背景色也是这个 */
+    border: none;
+}
+
+/* 右侧面板：继承圆角 */
+QWidget#RightPanel {
+    background-color: transparent;
+    border-bottom-right-radius: 12px;
+    border-left: 1px solid #EBEEF5; /* 左侧分割线 */
+}
+
+/* 中间面板 */
+QWidget#CenterPanel {
+    background-color: transparent;
+}
+
+QWidget#FilterWidget {
+    background-color: #FFFFFF; /* 纯白 */
+    border-bottom: none; /* [修改] 去掉底部分割线，让它和列表融为一体 */
+    /* 或者保留极淡的线: border-bottom: 1px solid #F5F7FA; */
+}
+
+QComboBox#ComboFilter {
+    background-color: #FFFFFF;
+    border: 1px solid #E4E7ED; /* 比之前更淡一点 */
+    border-radius: 4px;
+    padding: 0px 10px;
+    color: #606266;
+}
+QComboBox#ComboFilter:hover { border-color: #C0C4CC; }
+QComboBox#ComboFilter:on { border-color: #409EFF; }
+QComboBox#ComboFilter::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 30px;
+    border-left-width: 0px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+QComboBox#ComboFilter::down-arrow {
+    image: url(:/UI/QSS/icon/TeenyiconsDownSolid.png);
+    width: 12px; height: 12px;
+}
+
+/* 下拉列表视图 */
+QListView[comboList="true"] {
+    border: 1px solid #E4E7ED;
+    background-color: #FFFFFF;
+    selection-background-color: #F5F7FA;
+    selection-color: #409EFF;
+    color: #606266;
+    outline: none;
+    padding: 4px;
+}
+QListView[comboList="true"]::item {
+    min-height: 34px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+/* --- 3. 场景列表 (Scene List) --- */
+QListWidget#SceneList {
+    background-color: #FFFFFF; /* [核心] 列表背景也改为纯白 */
+    border: none;
+    outline: none;
+
+    /* Delegate 颜色微调 (更清透) */
+    qproperty-hoverColor: #F5F7FA;    /* 极淡灰悬停 */
+    qproperty-selectedColor: #ECF5FF; /* 极淡蓝选中 */
+    qproperty-barColor: #409EFF;      /* 选中条颜色 */
+    qproperty-iconColor: #909399;     /* 图标默认颜色变浅 */
+    qproperty-separatorColor: #EBEEF5;
+}
+
+/* 编辑模式下的输入框 */
+QLineEdit[sceneEditor="true"] {
+    background-color: #2D2D30;
+    color: white;
+    border: 1px solid #0078D7;
+    border-radius: 2px;
+    selection-background-color: #0078D7;
+}
+
+
+QPushButton#BtnAddScene {
+    background-color: #FFFFFF; /* 纯白 */
+    color: #606266; /* 默认灰色文字，不那么抢眼 */
+    border: none;
+    border-top: 1px solid #F2F6FC; /* 极淡分割线 */
+    font-size: 14px;
+    font-weight: 500;
+
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 0px;
+}
+QPushButton#BtnAddScene:hover {
+    background-color: #F5F7FA;
+    color: #409EFF; /* 悬停时变蓝 */
+}
+QPushButton#BtnAddScene:pressed {
+    background-color: #ECF5FF;
+    color: #006CC1;
+}
+
+/* --- 5. 中间区域 (Center Panel) --- */
+QWidget#CenterTopBar { background-color: #FFFFFF; }
+QLabel#SceneNameLabel { font-size: 16px; font-weight: bold; color: #303133; }
+QWidget#BottomBar { background-color: #FFFFFF; border-top: 1px solid #EBEEF5; }
+
+QPushButton#BtnLiveControl {
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    border: none;
+}
+QPushButton#BtnLiveControl[liveState="false"] {
+    background-color: #0078D7; color: white;
+}
+QPushButton#BtnLiveControl[liveState="false"]:hover {
+    background-color: #1084E3;
+}
+QPushButton#BtnLiveControl[liveState="true"] {
+    background-color: #FF4D4F; color: white;
+}
+QPushButton#BtnLiveControl[liveState="true"]:hover {
+    background-color: #FF7875;
+}
+
+QPushButton#BtnSetting {
+    background: transparent;
+    border: 1px solid #DCDFE6;
+    border-radius: 4px;
+    color: #606266;
+}
+QPushButton#BtnSetting:hover {
+    background-color: #F2F6FC;
+    border-color: #C0C4CC;
+}
+
+/* --- 6. 右侧工具栏 (Right Toolbar) --- */
+QWidget#RightPanel {
+    background-color: #FFFFFF;
+    border-left: 1px solid #EBEEF5;
+}
+
+QToolButton#RightToolBtn {
+    background: transparent;
+    border: none;
+    color: #606266;
+    font-size: 12px;
+}
+QToolButton#RightToolBtn:hover {
+    background-color: #F5F7FA;
+    border-radius: 6px;
+    color: #409EFF;
+}

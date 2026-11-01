@@ -1,0 +1,130 @@
+/* =======================================================
+   Universal Dialog Enterprise Theme (V2.0)
+   ======================================================= */
+
+/* 1. 顶层透明，防止出现灰色背景框 */
+UniversalDialog {
+    background: transparent;
+    border: none;
+}
+
+/* 2. 核心白底卡片 */
+QFrame#DialogMainFrame {
+    background-color: #FFFFFF;
+    border-radius: 8px;        /* 适中的圆角，太圆会显得像手机端 */
+    border: 1px solid #E6E6E6; /* 极细的灰色描边，增强实体感 */
+}
+
+/* =======================================================
+   标题栏
+   ======================================================= */
+QWidget#DialogTitleBar {
+    background-color: transparent;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    /* 标题栏不需要底部分割线，保持通透感 */
+}
+
+QLabel#DialogTitleLabel {
+    font-family: "Microsoft YaHei UI", "Segoe UI", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333333;
+    padding-left: 5px;
+}
+
+/* 关闭按钮 - 只有鼠标放上去才有背景色 */
+QPushButton#DialogCloseBtn {
+    background-color: transparent;
+    border-radius: 4px;
+    border: none;
+    /* 默认状态：浅灰色叉号 */
+    image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik01NzYuNjg1IDUxMmwymMyLjgtMjM1LjI4NSBhNDUuNzE0IDQ1LjcxNCAwIDAgMC02NC42ODUtNjQuNjg1TDUxMiA0NDcuMzE1IDM1MC4xMTUgMjg1LjQzIGE0NS43MTQgNDUuNzE0IDAgMCAwLTY0LjY4NSA2NC42ODVMNDQ3LjMxNSA1MTIgMjg1LjQzIDY3My44ODUgYTQ1LjcxNCA0NS43MTQgMCAwIDAgNjQuNjg1IDY0LjY4NUw1MTIgNTc2LjY4NSA2NzMuODg1IDczOC41NyBhNDUuNzE0IDQ1LjcxNCAwIDAgMCA2NC42ODUtNjQuNjg1TDU3Ni42ODUgNTEyeiIgZmlsbD0iIzkwOTM5OSIvPjwvc3ZnPg==');
+    padding: 6px; /* 控制图标大小 */
+}
+QPushButton#DialogCloseBtn:hover {
+    background-color: #E81123; /* Windows 风格的关闭红 */
+    /* 悬停状态：白色叉号 */
+    image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik01NzYuNjg1IDUxMmwymMyLjgtMjM1LjI4NSBhNDUuNzE0IDQ1LjcxNCAwIDAgMC02NC42ODUtNjQuNjg1TDUxMiA0NDcuMzE1IDM1MC4xMTUgMjg1LjQzIGE0NS43MTQgNDUuNzE0IDAgMCAwLTY0LjY4NSA2NC42ODVMNDQ3LjMxNSA1MTIgMjg1LjQzIDY3My44ODUgYTQ1LjcxNCA0NS43MTQgMCAwIDAgNjQuNjg1IDY0LjY4NUw1MTIgNTc2LjY4NSA2NzMuODg1IDczOC41NyBhNDUuNzE0IDQ1LjcxNCAwIDAgMCA2NC42ODUtNjQuNjg1TDU3Ni42ODUgNTEyeiIgZmlsbD0iI0ZGRkZGRiIvPjwvc3ZnPg==');
+}
+
+/* =======================================================
+   内容与文字
+   ======================================================= */
+QLabel#DialogMessageLabel {
+    color: #505050; /* 深灰，不要纯黑 */
+    font-family: "Microsoft YaHei UI", "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 24px; /* 增加行高，提升阅读体验 */
+}
+
+/* 图标定义 (Info/Error/Question) - 确保尺寸正确 */
+QLabel[type="info"] {
+    image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik01MTIgNjRhNDQ4IDQ0OCAwIDEgMCA0NDggNDQ4QTQ0OCA0NDggMCAwIDAgNTEyIDY0em0wIDc2OGExMjggMTI4IDAgMSAxIDEyOC0xMjggMTI4IDEyOCAwIDAgMS0xMjggMTI4em0zMi0yNDBhMzIgMzIgMCAwIDEtNjQgMHYtMTkyYTMyIDMyIDAgMCAxIDY0IDB6IiBmaWxsPSIjMDA2RUZGIi8+PC9zdmc+');
+}
+QLabel[type="error"] {
+    image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik01MTIgNjRhNDQ4IDQ0OCAwIDEgMCA0NDggNDQ4QTQ0OCA0NDggMCAwIDAgNTEyIDY0em0xNTUuMiA2MTQuNGMzLjIgMy4yIDMuMiA4LjQgMCAxMS42LTMuMiAzLjItOC40IDMuMi0xMS42IDBMNTEyIDU0Ni44IDM2Ny42IDY4OS45Yy0zLjIgMy4yLTguNCAzLjItMTEuNiAwLTMuMi0zLjItMy4yLTguNCAwLTExLjZMNTAwLjQgNTM1LjIgMzMyLjggMzY3LjZjLTMuMi0zLjItMy4yLTguNCAwLTExLjYgMy4yLTMuMiA4LjQtMy4yIDExLjYgMEw1MTIgNTIzLjZsMTY3LjYtMTY3LjZjMy4yLTMuMiA4LjQtMy4yIDExLjYgMCAzLjIgMy4yIDMuMiA4LjQgMCAxMS42TDUyMy42IDUzNS4ybDE0My42IDE0My4yeiIgZmlsbD0iI0Y1NkNCNiIvPjwvc3ZnPg==');
+}
+QLabel[type="question"] {
+    image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik01MTIgNjRhNDQ4IDQ0OCAwIDEgMCA0NDggNDQ4QTQ0OCA0NDggMCAwIDAgNTEyIDY0em0wIDc2OGExMjggMTI4IDAgMSAxIDEyOC0xMjggMTI4IDEyOCAwIDAgMS0xMjggMTI4em0xMjEtNDk4LjQ0bC0yMC40OCA5LjYyYS4xMi4xMiAwIDAgMS0uMTQuMTJjLTI5LjY2LTE0LjEyLTUyLjU0LTEzLjk4LTc1LjEyIDEuMTJzLTMzLjU2IDM4LjgtMzMuNTYgNzEuNTZhMzIgMzIgMCAwIDAgNjQgMGMwLTE3LjM4IDQuMzYtMjcuMjIgMTMuMzYtMzMuMjJzMjIuNzYtNy42IDQyLjg2IDJjNjguNTYgMzIuNDYgMTE4IDcuNDggMTMxLjQ2LTY2LjU4IDEzLjkyLTc2LjY0LTM3LjEyLTEzOS42OC0xMTMuOTItMTQwLjY2LTY5LjQ4LS44OC0xMzAuMjYgNDQuMTQtMTQ4Ljg4IDEwNy4xNGEzMiAzMiAwIDEgMCA2MS44MiAxOC4yOGMxMS4xLTM3LjUyIDQ3LjM2LTY0LjM4IDg4Ljg0LTYzLjg2IDQ1Ljg4LjU4IDc2LjM4IDM4LjI0IDY4IDg0bC0xNC4yOCAxMC40NnoiIGZpbGw9IiNGRjlDMTUiLz48L3N2Zz4=');
+}
+
+/* =======================================================
+   按钮系统 (核心质感来源)
+   ======================================================= */
+QPushButton {
+    font-family: "Microsoft YaHei UI", sans-serif;
+    font-size: 14px;
+    border-radius: 4px; /* 经典企业级圆角 */
+    padding: 6px 18px;  /* 上下 6px，左右 18px */
+    outline: none;
+}
+
+/* 1. 主操作按钮 (Primary) - 鲜艳蓝 */
+QPushButton[type="primary"] {
+    background-color: #006EFF;
+    color: #FFFFFF;
+    border: 1px solid #006EFF;
+}
+QPushButton[type="primary"]:hover {
+    background-color: #2985FF;
+    border-color: #2985FF;
+}
+QPushButton[type="primary"]:pressed {
+    background-color: #005BCF;
+    border-color: #005BCF;
+    padding-top: 7px; /* 按下时文字微动，增加点击感 */
+    padding-bottom: 5px;
+}
+
+/* 2. 次要操作/取消 (Secondary) - 白底灰框 */
+QPushButton[type="secondary"] {
+    background-color: #FFFFFF;
+    color: #333333;
+    border: 1px solid #D9D9D9;
+}
+QPushButton[type="secondary"]:hover {
+    color: #006EFF;
+    border-color: #006EFF;
+    background-color: #F5F9FF; /* 极淡的蓝背景 */
+}
+QPushButton[type="secondary"]:pressed {
+    background-color: #F0F0F0;
+    padding-top: 7px;
+    padding-bottom: 5px;
+}
+
+/* 3. 危险操作 (Danger) - 红底 */
+QPushButton[type="danger"] {
+    background-color: #FF4D4F;
+    color: #FFFFFF;
+    border: 1px solid #FF4D4F;
+}
+QPushButton[type="danger"]:hover {
+    background-color: #FF7875;
+    border-color: #FF7875;
+}
+QPushButton[type="danger"]:pressed {
+    background-color: #D9363E;
+    border-color: #D9363E;
+}

@@ -1,0 +1,180 @@
+/* ================= 全局基础设置 ================= */
+QWidget {
+    font-family: "Microsoft YaHei";
+    color: #ffffff;
+    outline: none;
+}
+
+/* ================= 顶部栏样式 ================= */
+/* Logo */
+QLabel#ws_logoLabel {
+    color: #CCCCCC;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 用户头像 */
+QLabel#ws_userAvatar {
+    background-color: #AAAAAA;
+    border-radius: 16px;
+}
+
+/* 用户名 */
+QLabel#ws_userLabel {
+    color: #CCCCCC;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+/* 竖线分割 */
+QWidget#ws_vLine {
+    background-color: #444444;
+}
+
+/* 窗口控制按钮 (最小化、最大化) */
+QPushButton[class="winCtrlBtn"] {
+    background-color: transparent;
+    color: #888888;
+    border: none;
+    font-size: 14px;
+    font-family: "Segoe UI Symbol", "Microsoft YaHei";
+}
+QPushButton[class="winCtrlBtn"]:hover {
+    background-color: rgba(255, 255, 255, 30);
+    color: white;
+}
+/* 关闭按钮 (红色背景) */
+QPushButton#ws_closeBtn:hover {
+    background-color: #c42b1c;
+    color: white;
+}
+
+/* ================= 主体区域样式 ================= */
+
+/* 中间大标题 */
+QLabel#ws_mainTitle {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* 左右导航按钮 (< >) */
+QPushButton#ws_navBtn {
+    background-color: rgba(255, 255, 255, 30);
+    color: white;
+    border-radius: 24px; /* 圆形: 48x48 -> r=24 */
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid rgba(255,255,255,50);
+}
+QPushButton#ws_navBtn:hover {
+    background-color: rgba(255, 255, 255, 60);
+}
+QPushButton#ws_navBtn:pressed {
+    background-color: rgba(255, 255, 255, 20);
+}
+
+/* ================= 卡片样式 (新增部分) ================= */
+/* 说明：
+   1. 使用 border-image 可以让图片随控件大小自动拉伸缩放
+   2. 0 0 0 0 stretch stretch 表示不裁剪边缘，完全铺满
+   3. 请确保 ./skin/images/ 目录下有对应的图片文件
+*/
+
+/* 通用卡片设置 */
+QWidget#Card_Scene, QWidget#Card_Single, QWidget#Card_Multi, QWidget#Card_Interactive, QWidget#Card_Live {
+    border-radius: 12px;
+    /* 如果没有图片，先用颜色占位，方便调试 */
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* 1. 场景制作 */
+QWidget#Card_Scene {
+    border-image: url(E:/live/CourseStudio/UI/QSS/srs/screnn.png) 0 0 0 0 stretch stretch;
+}
+
+/* 2. 单画面课程 */
+QWidget#Card_Single {
+    border-image: url(E:/live/CourseStudio/UI/QSS/srs/oneclass.png) 0 0 0 0 stretch stretch;
+}
+
+/* 3. 多画面课程 */
+QWidget#Card_Multi {
+    border-image: url(E:/live/CourseStudio/UI/QSS/srs/Mutilclass.png) 0 0 0 0 stretch stretch;
+}
+
+/* 4. 互动课程 */
+QWidget#Card_Interactive {
+    border-image: url(E:/live/CourseStudio/UI/QSS/srs/chat.png) 0 0 0 0 stretch stretch;
+}
+
+/* 5. 直播课程 */
+QWidget#Card_Live {
+    border-image: url(E:/live/CourseStudio/UI/QSS/srs/braodcast.png) 0 0 0 0 stretch stretch;
+}
+
+/* 卡片按下效果 (利用动态属性 pressed) */
+QWidget[pressed="true"] {
+    /* 按下时稍微变暗或变透明 */
+    qproperty-opacity: 0.9;
+}
+
+/* 卡片标题 */
+QLabel#CardTitle {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: transparent; /* 确保背景透明 */
+}
+
+/* 卡片描述 */
+QLabel#CardDesc {
+    color: #EEEEEE;
+    font-size: 12px;
+    background-color: transparent;
+}
+
+/* 标题栏区域 */
+QWidget#DialogTitleBar {
+    background-color: #202229; /* 比主体稍深，区分头部 */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid #333333;
+}
+
+/* 标题文字 */
+QLabel#DialogTitleText {
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* 关闭按钮 (右上角) */
+QPushButton#BtnCloseDialog {
+    background-color: transparent;
+    border: none;
+    color: #AAAAAA;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton#BtnCloseDialog:hover {
+    background-color: #C42B1C; /* 红色高亮 */
+    color: white;
+    border-radius: 4px;
+}
+
+QPushButton#BtnCloseDialog:pressed {
+    background-color: #A02015;
+}
+
+/* 内容区域 */
+QWidget#DialogContentArea {
+    background-color: transparent; /* 透出 MainFrame 的背景 */
+}
+
+/* 覆盖之前的通用 QDialog 设置 (防止冲突) */
+QDialog#SourceDialog {
+    background: transparent; /* 设为透明，依靠 MainFrame 绘制 */
+    border: none;
+}

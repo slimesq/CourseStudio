@@ -1,0 +1,113 @@
+/* 全局背景与字体 */
+QWidget {
+    background-color: #1a1a24;
+    font-family: "Microsoft YaHei";
+    color: #ffffff;
+    outline: none;
+}
+
+/* 顶部标题 */
+QLabel#m_titleLabel {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* 左右分栏的小标题 */
+QLabel {
+    font-size: 16px;
+    color: #cccccc;
+}
+
+/* 输入框 */
+QLineEdit {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    padding-left: 10px;
+    color: #333333;
+    font-size: 14px;
+}
+QLineEdit:focus {
+    border: 1px solid #b92b3a;
+}
+
+/* 获取验证码按钮 */
+QPushButton#m_getCodeBtn {
+    background-color: transparent;
+    color: #888888;
+    border: none;
+    font-size: 13px;
+    text-align: right;
+}
+QPushButton#m_getCodeBtn:hover {
+    color: #b92b3a;
+}
+
+/* 登录按钮 */
+QPushButton#m_loginBtn {
+    background-color: #b92b3a;
+    color: white;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton#m_loginBtn:hover {
+    background-color: #d63c4d;
+}
+QPushButton#m_loginBtn:pressed {
+    background-color: #9e1f2d;
+}
+
+/* 复选框 */
+QCheckBox {
+    color: #cccccc;
+    font-size: 13px;
+    spacing: 5px;
+}
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid #666666;
+    background: transparent;
+}
+QCheckBox::indicator:checked {
+    background-color: #b92b3a;
+    border-color: #b92b3a;
+}
+
+/* 顶部关闭按钮 */
+QPushButton#m_closeBtn {
+    background-color: transparent;
+    color: #aaaaaa;
+    border: none;
+    font-family: "Arial";
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton#m_closeBtn:hover {
+    background-color: #c42b1c;
+    color: white;
+    border-top-right-radius: 6px;
+}
+QPushButton#m_closeBtn:pressed {
+    background-color: #b32415;
+}
+
+/* 扫码提示文字 */
+QLabel#m_qrHintLabel {
+    color: #888888;
+    font-size: 13px;
+}
+
+/* 注册链接文字 */
+QLabel#m_registerLabel {
+    color: #b92b3a;
+}
+
+/* 中间分割线 */
+QFrame#vSplitLine {
+    background-color: #444444;
+    border: none;
+}

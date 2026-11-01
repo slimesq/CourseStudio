@@ -1,0 +1,13 @@
+/build/
+/cmake-build-*/
+/.qtcreator/
+/.vs/
+/.cache/
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/compile_commands.json
+/CMakeUserPresets.json
+*.user
+*.user.*
+*.suo

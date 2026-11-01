@@ -1,0 +1,357 @@
+/* =======================================================
+   全局字体与基础设置
+   ======================================================= */
+QWidget {
+    font-family: "Microsoft YaHei UI", "Segoe UI", sans-serif;
+    font-size: 13px;
+    color: #333333; /* 深色文字，匹配白色主题 */
+    outline: none;
+}
+
+/* =======================================================
+   ScreenWindow 主容器
+   ======================================================= */
+/* 外层 Frame：负责背景色和底部圆角 */
+QFrame#ScreenMainFrame {
+    background-color: #FFFFFF;
+    border: 1px solid #EBEEF5;
+    border-top: none; /* 与标题栏融合 */
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* 内层 Body：确保背景纯白 */
+QWidget#BodyWidget {
+    background-color: #FFFFFF;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* =======================================================
+   布局面板 (左/中/右)
+   ======================================================= */
+QWidget#LeftPanel {
+    background-color: transparent;
+    border-right: 1px solid #EBEEF5;
+}
+
+QWidget#RightPanel {
+    background-color: transparent;
+    border-left: 1px solid #EBEEF5;
+}
+
+QWidget#CenterPanel {
+    background-color: transparent;
+}
+
+/* =======================================================
+   左侧组件
+   ======================================================= */
+/* 过滤器容器 */
+QWidget#FilterWidget {
+    background-color: transparent;
+    border-bottom: 1px solid #EBEEF5;
+}
+
+/* 过滤器下拉框 */
+/* =======================================================
+   企业级立体透明下拉框重构
+   ======================================================= */
+QComboBox#ComboFilter {
+    background-color: rgba(245, 247, 250, 0.8); /* 半透明背景 */
+    border: 1px solid #DCDFE6;
+    border-radius: 6px;
+    color: #303133;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 12px;
+    min-height: 28px;
+    /* 模拟微弱立体感 */
+    border-bottom: 2px solid #D4D7DE;
+}
+
+QComboBox#ComboFilter:hover {
+    background-color: rgba(255, 255, 255, 1);
+    border-color: #409EFF;
+    /* 悬浮时的立体阴影 */
+    border-bottom: 2px solid #337ECC;
+}
+
+QComboBox#ComboFilter:on { /* 展开状态 */
+    border-bottom: 1px solid #409EFF;
+    background-color: #FFFFFF;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* 下拉箭头定制 */
+QComboBox#ComboFilter::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 24px;
+    border-left: none;
+}
+
+QComboBox#ComboFilter::down-arrow {
+    image: url(:/UI/QSS/icon/TeenyiconsDownSolid.png); /* 建议换成填充型的 Icon */
+    width: 12px;
+    height: 12px;
+}
+
+/* =======================================================
+   重构：超薄版企业级立体下拉框
+   ======================================================= */
+QComboBox#ComboFilter {
+    background-color: rgba(248, 249, 251, 0.9);
+    border: 1px solid #DCDFE6;
+    border-radius: 4px; /* 减小圆角以匹配更薄的高度 */
+    color: #303133;
+    font-size: 11px; /* 字体相应调小 */
+    font-weight: 500;
+    padding: 0px 8px; /* 极简上下边距 */
+    min-height: 20px;
+    max-height: 24px;
+}
+
+QComboBox#ComboFilter:hover {
+    background-color: #FFFFFF;
+    border-color: #409EFF;
+}
+
+/* 下拉箭头缩小 */
+QComboBox#ComboFilter::down-arrow {
+    image: url(:/UI/QSS/icon/TeenyiconsDownSolid.png);
+    width: 8px;
+    height: 8px;
+}
+
+/* =======================================================
+   弹出窗口：圆角、阴影与透明适配
+   ======================================================= */
+QComboBox#ComboFilter QAbstractItemView {
+    background-color: #FFFFFF;
+    border: 1px solid #EBEEF5;
+    border-radius: 8px; /* 这里设置视图的圆角 */
+    selection-background-color: #F0F7FF;
+    selection-color: #409EFF;
+    outline: none;
+    /* 关键：给 View 留出边距，否则边框圆角会被裁剪 */
+    margin: 0px;
+}
+
+QComboBox#ComboFilter QAbstractItemView::item {
+    height: 28px; /* 每一行保持舒适的操作高度 */
+    padding-left: 10px;
+    color: #606266;
+    border: none;
+}
+
+QComboBox#ComboFilter QAbstractItemView::item:hover {
+    background-color: #F5F7FA;
+    border-radius: 4px; /* 内部 Item 也要圆角才精致 */
+}
+
+/* 场景列表 */
+QListWidget#SceneList {
+    background-color: transparent;
+    border: none;
+}
+QListWidget#SceneList::item {
+    height: 40px;
+    padding-left: 10px;
+    border-bottom: 1px solid #FAFAFA;
+    color: #333;
+}
+QListWidget#SceneList::item:selected {
+    background-color: #ECF5FF;
+    color: #409EFF;
+    border-left: 3px solid #409EFF;
+}
+QListWidget#SceneList::item:hover {
+    background-color: #F2F6FC;
+}
+
+/* 新建场景按钮 */
+QPushButton#BtnAddScene {
+    background-color: #F5F7FA;
+    color: #0078D7;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    border-top: 1px solid #EBEEF5;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 0px;
+}
+QPushButton#BtnAddScene:hover {
+    background-color: #ECF5FF;
+    color: #409EFF;
+}
+QPushButton#BtnAddScene:pressed {
+    background-color: #D9ECFF;
+}
+
+/* =======================================================
+   中间区域组件
+   ======================================================= */
+/* 顶部栏 */
+QWidget#CenterTopBar {
+    background-color: transparent;
+    border-bottom: 1px solid #EBEEF5;
+}
+QLabel#SceneNameLabel {
+    font-size: 16px;
+    font-weight: bold;
+    color: #303133;
+}
+
+/* 底部栏 */
+QWidget#BottomBar {
+    background-color: transparent;
+    border-top: 1px solid #EBEEF5;
+}
+
+/* 直播控制按钮 */
+QPushButton#BtnLiveControl {
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    border: none;
+    color: white;
+}
+/* 状态：未直播 */
+QPushButton#BtnLiveControl[liveState="false"] {
+    background-color: #0078D7;
+}
+QPushButton#BtnLiveControl[liveState="false"]:hover {
+    background-color: #1084E3;
+}
+/* 状态：直播中 */
+QPushButton#BtnLiveControl[liveState="true"] {
+    background-color: #FF4D4F;
+}
+QPushButton#BtnLiveControl[liveState="true"]:hover {
+    background-color: #FF7875;
+}
+
+/* 设置按钮 */
+QPushButton#BtnSetting {
+    background: transparent;
+    border: 1px solid #DCDFE6;
+    border-radius: 4px;
+    color: #606266;
+}
+QPushButton#BtnSetting:hover {
+    background-color: #F2F6FC;
+    border-color: #C0C4CC;
+}
+
+/* 直播时长文本 */
+QLabel#LiveDurationLabel {
+    font-family: 'Consolas';
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* =======================================================
+   右侧区域 (场景编辑器模式)
+   ======================================================= */
+QToolButton#RightToolBtn {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: #606266;
+    font-size: 12px;
+}
+QToolButton#RightToolBtn:hover {
+    background-color: #F5F7FA;
+    color: #409EFF;
+}
+
+/* =======================================================
+   LiveDockPanel (直播互动面板) 样式
+   ======================================================= */
+
+/* 1. Header 区域 */
+QWidget#DockHeader {
+    background: transparent;
+}
+QLabel#DockTitleLabel {
+    color: #303133;
+    font-weight: bold;
+    font-family: 'Microsoft YaHei UI';
+    font-size: 13px;
+}
+
+/* 2. 悬浮/关闭按钮 */
+QPushButton#DockBtnFloat, QPushButton#DockBtnClose {
+    border: none;
+    background: transparent;
+    color: #909399;
+    border-radius: 4px;
+}
+/* 悬浮按钮 Hover */
+QPushButton#DockBtnFloat:hover {
+    background-color: #F2F6FC;
+    color: #606266;
+}
+/* 关闭按钮 Hover (红色警示) */
+QPushButton#DockBtnClose:hover {
+    background-color: #F56C6C;
+    color: white;
+}
+
+/* 3. 观众列表 & 消息列表 (通用) */
+QListWidget#ViewerList, QListWidget#MsgList {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+/* 滚动条隐藏或细化 (Webkit 风格) */
+QListWidget#ViewerList QScrollBar:vertical,
+QListWidget#MsgList QScrollBar:vertical {
+    border: none;
+    background: transparent;
+    width: 6px;
+    margin: 0px;
+}
+QListWidget#ViewerList QScrollBar::handle:vertical,
+QListWidget#MsgList QScrollBar::handle:vertical {
+    background: #DCDFE6;
+    min-height: 20px;
+    border-radius: 3px;
+}
+QListWidget#ViewerList QScrollBar::handle:vertical:hover,
+QListWidget#MsgList QScrollBar::handle:vertical:hover {
+    background: #C0C4CC;
+}
+QListWidget#ViewerList QScrollBar::add-line:vertical,
+QListWidget#ViewerList QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+/* 列表项样式 */
+QListWidget#ViewerList::item, QListWidget#MsgList::item {
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    margin: 2px 6px;
+    padding: 4px;
+}
+QListWidget#ViewerList::item:hover, QListWidget#MsgList::item:hover {
+    background-color: #F2F3F5; /* 极淡灰 hover */
+}
+QListWidget#ViewerList::item:selected, QListWidget#MsgList::item:selected {
+    background-color: #E6F1FC; /* 极淡蓝选中 */
+    color: #1976D2;
+}
+/* 失去焦点时的选中态 (不那么抢眼) */
+QListWidget#ViewerList::item:selected:!active, QListWidget#MsgList::item:selected:!active {
+    background-color: #F2F3F5;
+    color: #606266;
+}
